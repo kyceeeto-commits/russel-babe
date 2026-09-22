@@ -1,0 +1,1481 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>for you, palanglang ♡</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=DM+Sans:wght@400;500&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html,
+body {
+    width: 100%;
+    min-height: 100%;
+}
+
+body {
+    overflow-x: hidden;
+    font-family: 'DM Sans', sans-serif;
+    background:
+        radial-gradient(circle at 20% 20%, rgba(255,255,255,.8), transparent 25%),
+        radial-gradient(circle at 80% 70%, rgba(255,210,225,.55), transparent 30%),
+        linear-gradient(135deg, #fff8fa, #fcecf3, #f8e8ee);
+    color: #654b55;
+}
+
+/* =========================
+   BACKGROUND
+========================= */
+
+#background {
+    position: fixed;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.bg-heart {
+    position: absolute;
+    opacity: .25;
+    animation: floatBackground linear infinite;
+}
+
+@keyframes floatBackground {
+    from {
+        transform: translateY(110vh) rotate(0deg);
+    }
+    to {
+        transform: translateY(-15vh) rotate(360deg);
+    }
+}
+
+/* =========================
+   SCREENS
+========================= */
+
+.screen {
+    position: fixed;
+    inset: 0;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 30px 18px;
+    overflow-y: auto;
+    z-index: 2;
+}
+
+.screen.active {
+    display: flex;
+    animation: screenIn .8s ease forwards;
+}
+
+@keyframes screenIn {
+    from {
+        opacity: 0;
+        transform: scale(.97);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* =========================
+   INTRO
+========================= */
+
+.intro-container {
+    width: min(100%, 900px);
+    min-height: 90vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    text-align: center;
+}
+
+.small-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(18px, 3vw, 25px);
+    letter-spacing: 4px;
+    color: #a77d8b;
+    margin-bottom: 15px;
+}
+
+.intro-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(42px, 8vw, 78px);
+    color: #6d4c58;
+    font-weight: 500;
+    line-height: .95;
+    margin-bottom: 18px;
+}
+
+.intro-subtitle {
+    font-size: 13px;
+    letter-spacing: 2px;
+    color: #a27d88;
+    margin-bottom: 15px;
+}
+
+/* =========================
+   3D BOUQUET
+========================= */
+
+.bouquet {
+    position: relative;
+    width: min(90vw, 570px);
+    height: 390px;
+    margin-top: -10px;
+    margin-bottom: -35px;
+    perspective: 900px;
+    transform-style: preserve-3d;
+    animation: bouquetFloat 4s ease-in-out infinite;
+    z-index: 1;
+}
+
+@keyframes bouquetFloat {
+    0%,100% {
+        transform: translateY(0) rotateY(-2deg);
+    }
+    50% {
+        transform: translateY(-8px) rotateY(2deg);
+    }
+}
+
+.flower {
+    position: absolute;
+    width: 105px;
+    height: 105px;
+    transform-style: preserve-3d;
+    animation: flowerSway 4s ease-in-out infinite;
+}
+
+.flower:nth-child(1) {
+    left: 17%;
+    top: 23%;
+    transform: scale(.9) rotate(-12deg);
+}
+
+.flower:nth-child(2) {
+    left: 36%;
+    top: 8%;
+    transform: scale(1.05);
+}
+
+.flower:nth-child(3) {
+    left: 55%;
+    top: 21%;
+    transform: scale(.92) rotate(12deg);
+}
+
+.flower:nth-child(4) {
+    left: 28%;
+    top: 40%;
+    transform: scale(.78) rotate(-18deg);
+}
+
+.flower:nth-child(5) {
+    left: 48%;
+    top: 42%;
+    transform: scale(.78) rotate(15deg);
+}
+
+@keyframes flowerSway {
+    0%,100% { margin-left: 0; }
+    50% { margin-left: 4px; }
+}
+
+.petal {
+    position: absolute;
+    width: 47px;
+    height: 68px;
+    border-radius: 60% 60% 45% 45%;
+    left: 29px;
+    top: 18px;
+    transform-origin: 50% 85%;
+    box-shadow:
+        inset -5px -8px 12px rgba(0,0,0,.06),
+        inset 5px 5px 12px rgba(255,255,255,.4);
+}
+
+.petal:nth-child(1) {
+    transform: rotate(0deg) translateY(-22px);
+}
+
+.petal:nth-child(2) {
+    transform: rotate(72deg) translateY(-22px);
+}
+
+.petal:nth-child(3) {
+    transform: rotate(144deg) translateY(-22px);
+}
+
+.petal:nth-child(4) {
+    transform: rotate(216deg) translateY(-22px);
+}
+
+.petal:nth-child(5) {
+    transform: rotate(288deg) translateY(-22px);
+}
+
+.flower-pink .petal {
+    background: linear-gradient(145deg, #f9b7ca, #e985a4);
+}
+
+.flower-white .petal {
+    background: linear-gradient(145deg, #fff, #f6dfe7);
+}
+
+.flower-peach .petal {
+    background: linear-gradient(145deg, #ffd2bd, #f3a58e);
+}
+
+.flower-lavender .petal {
+    background: linear-gradient(145deg, #dfc7ef, #bda0d6);
+}
+
+.flower-rose .petal {
+    background: linear-gradient(145deg, #ed9db8, #d56e94);
+}
+
+.flower-center {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    left: 37px;
+    top: 38px;
+    border-radius: 50%;
+    background: radial-gradient(circle, #f6cf76, #d69c48);
+    z-index: 10;
+    box-shadow: 0 3px 8px rgba(0,0,0,.1);
+}
+
+.flower-center::after {
+    content: "✦";
+    position: absolute;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    color: #fff3c9;
+    font-size: 14px;
+}
+
+.stem {
+    position: absolute;
+    width: 5px;
+    height: 250px;
+    left: 50%;
+    top: 70px;
+    background: linear-gradient(to right, #718d66, #91a983, #597450);
+    border-radius: 10px;
+    transform-origin: top;
+    z-index: -1;
+}
+
+.leaf {
+    position: absolute;
+    width: 55px;
+    height: 25px;
+    background: linear-gradient(145deg, #9bb18d, #607b59);
+    border-radius: 100% 0 100% 0;
+    z-index: -1;
+}
+
+.leaf.one {
+    left: -12px;
+    top: 180px;
+    transform: rotate(25deg);
+}
+
+.leaf.two {
+    right: -12px;
+    top: 145px;
+    transform: rotate(-25deg) scaleX(-1);
+}
+
+/* wrapper */
+
+.wrapper {
+    position: absolute;
+    width: 205px;
+    height: 145px;
+    bottom: 5px;
+    left: 50%;
+    transform: translateX(-50%) perspective(400px) rotateX(-4deg);
+    background: linear-gradient(135deg, #e8b8c7, #c9869d);
+    clip-path: polygon(8% 0, 92% 0, 100% 100%, 0 100%);
+    z-index: 30;
+    box-shadow: 0 15px 30px rgba(112,67,82,.15);
+}
+
+.wrapper::before {
+    content: "";
+    position: absolute;
+    width: 45px;
+    height: 180px;
+    left: 80px;
+    top: -18px;
+    background: rgba(255,255,255,.2);
+    transform: rotate(12deg);
+}
+
+.wrapper-ribbon {
+    position: absolute;
+    width: 12px;
+    height: 155px;
+    background: rgba(255,255,255,.3);
+    left: 96px;
+    top: -5px;
+    z-index: 31;
+}
+
+.wrapper-bow {
+    position: absolute;
+    width: 50px;
+    height: 30px;
+    left: 77px;
+    top: -17px;
+    z-index: 32;
+}
+
+.wrapper-bow::before,
+.wrapper-bow::after {
+    content: "";
+    position: absolute;
+    width: 32px;
+    height: 25px;
+    border: 5px solid #fff;
+    border-radius: 70% 30% 70% 30%;
+    opacity: .75;
+}
+
+.wrapper-bow::before {
+    left: -18px;
+    transform: rotate(25deg);
+}
+
+.wrapper-bow::after {
+    right: -18px;
+    transform: rotate(-25deg) scaleX(-1);
+}
+
+/* =========================
+   ENVELOPE
+========================= */
+
+.envelope-area {
+    position: relative;
+    z-index: 100;
+    margin-top: -65px;
+}
+
+.envelope {
+    width: 255px;
+    height: 165px;
+    position: relative;
+    cursor: pointer;
+    filter: drop-shadow(0 18px 22px rgba(100,65,78,.18));
+    transition: transform .4s ease;
+}
+
+.envelope:hover {
+    transform: translateY(-8px) scale(1.03);
+}
+
+.envelope-back {
+    position: absolute;
+    inset: 0;
+    background: #f5d9e2;
+    border-radius: 5px;
+}
+
+.envelope-front {
+    position: absolute;
+    inset: 0;
+    background: #edc5d2;
+    clip-path: polygon(0 0, 50% 55%, 100% 0, 100% 100%, 0 100%);
+    border-radius: 5px;
+    z-index: 3;
+}
+
+.envelope-flap {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 105px;
+    background: #f9e1e8;
+    clip-path: polygon(0 0, 100% 0, 50% 72%);
+    transform-origin: top;
+    transition: transform .9s cubic-bezier(.68,-.55,.27,1.55);
+    z-index: 5;
+}
+
+.envelope.open .envelope-flap {
+    transform: rotateX(180deg);
+}
+
+.letter {
+    position: absolute;
+    width: 205px;
+    height: 125px;
+    left: 25px;
+    top: 20px;
+    background: #fffdfb;
+    border-radius: 4px;
+    z-index: 2;
+    transition: transform 1s ease, top 1s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 15px;
+    box-shadow: 0 4px 12px rgba(0,0,0,.06);
+}
+
+.envelope.open .letter {
+    top: -95px;
+    transform: scale(1.06);
+    z-index: 10;
+}
+
+.letter-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 23px;
+    color: #805968;
+}
+
+.click-text {
+    margin-top: 18px;
+    font-size: 12px;
+    letter-spacing: 2px;
+    color: #a27a87;
+    animation: pulseText 1.7s ease-in-out infinite;
+}
+
+@keyframes pulseText {
+    0%,100% { opacity: .45; }
+    50% { opacity: 1; }
+}
+
+/* =========================
+   BLOOM
+========================= */
+
+.bloom-message {
+    margin-top: 20px;
+    opacity: 0;
+    transform: translateY(15px);
+    transition: all 1s ease;
+}
+
+.bloom-message.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.bloom-message h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 38px;
+    font-weight: 500;
+}
+
+.bloom-message p {
+    margin-top: 8px;
+    font-size: 14px;
+    color: #9b7782;
+}
+
+/* =========================
+   CONTENT PAGES
+========================= */
+
+.content-box {
+    width: min(92vw, 720px);
+    text-align: center;
+}
+
+.page-label {
+    font-size: 11px;
+    letter-spacing: 4px;
+    color: #b28c98;
+    margin-bottom: 12px;
+    text-transform: uppercase;
+}
+
+.page-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(38px, 7vw, 62px);
+    font-weight: 500;
+    color: #704f5c;
+    margin-bottom: 25px;
+}
+
+/* personalized image */
+
+.personalized-image {
+    width: min(100%, 560px);
+    max-height: 65vh;
+    object-fit: contain;
+    border-radius: 14px;
+    padding: 9px;
+    background: rgba(255,255,255,.72);
+    box-shadow:
+        0 25px 55px rgba(107,67,82,.17),
+        0 0 0 1px rgba(255,255,255,.8);
+}
+
+.personalized-caption {
+    margin-top: 18px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 26px;
+    color: #805866;
+}
+
+/* =========================
+   PHOTO PAGES
+========================= */
+
+.photo-page {
+    width: min(95vw, 800px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.photo-number {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    color: #a47b89;
+    margin-bottom: 10px;
+}
+
+.photo-frame {
+    position: relative;
+    width: min(92vw, 640px);
+    padding: 14px 14px 65px;
+    background: #fffdfa;
+    box-shadow:
+        0 25px 55px rgba(90,58,70,.16),
+        0 4px 10px rgba(90,58,70,.08);
+    transform: rotate(-1deg);
+}
+
+.photo-page:nth-child(even) .photo-frame {
+    transform: rotate(1deg);
+}
+
+.photo-frame::after {
+    content: "";
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 70%;
+    height: 1px;
+    background: #ead5dc;
+}
+
+.photo-frame img {
+    display: block;
+    width: 100%;
+    max-height: 57vh;
+    object-fit: contain;
+    background: #f7eef1;
+}
+
+.message {
+    margin-top: 28px;
+    width: min(92vw, 650px);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(19px, 3vw, 25px);
+    line-height: 1.45;
+    color: #654b55;
+    white-space: pre-line;
+}
+
+/* =========================
+   FINAL PAGE
+========================= */
+
+.final-container {
+    width: min(92vw, 750px);
+    text-align: center;
+}
+
+.final-bouquet {
+    font-size: 75px;
+    margin-bottom: 15px;
+    animation: finalFloat 3s ease-in-out infinite;
+}
+
+@keyframes finalFloat {
+    0%,100% { transform: translateY(0); }
+    50% { transform: translateY(-9px); }
+}
+
+.final-message {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(22px, 4vw, 31px);
+    line-height: 1.55;
+    color: #684c58;
+    white-space: pre-line;
+}
+
+.final-message .ending {
+    display: block;
+    margin-top: 28px;
+    font-size: 34px;
+    color: #9b5f73;
+}
+
+/* =========================
+   BUTTONS
+========================= */
+
+.next-btn,
+.music-btn {
+    border: none;
+    cursor: pointer;
+    font-family: 'DM Sans', sans-serif;
+}
+
+.next-btn {
+    margin-top: 28px;
+    padding: 12px 28px;
+    border-radius: 100px;
+    background: rgba(255,255,255,.75);
+    color: #825968;
+    box-shadow: 0 8px 20px rgba(90,58,70,.1);
+    transition: .3s;
+}
+
+.next-btn:hover {
+    transform: translateY(-3px);
+    background: white;
+}
+
+.music-btn {
+    position: fixed;
+    right: 18px;
+    bottom: 18px;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background: rgba(255,255,255,.75);
+    color: #885c6d;
+    z-index: 999;
+    box-shadow: 0 5px 20px rgba(70,40,55,.12);
+}
+
+/* =========================
+   PETALS
+========================= */
+
+.petal-fall {
+    position: fixed;
+    top: -30px;
+    z-index: 999;
+    pointer-events: none;
+    animation: fall linear forwards;
+}
+
+@keyframes fall {
+    0% {
+        transform: translateY(-30px) rotate(0deg);
+        opacity: 0;
+    }
+    10% {
+        opacity: .9;
+    }
+    100% {
+        transform: translateY(110vh) translateX(80px) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 600px) {
+
+    .screen {
+        padding: 20px 12px;
+    }
+
+    .intro-container {
+        min-height: 100vh;
+    }
+
+    .bouquet {
+        height: 320px;
+        transform: scale(.78);
+        margin-top: -25px;
+        margin-bottom: -80px;
+    }
+
+    .envelope-area {
+        margin-top: -10px;
+    }
+
+    .envelope {
+        width: 235px;
+        height: 150px;
+    }
+
+    .envelope.open .letter {
+        top: -85px;
+    }
+
+    .message {
+        font-size: 20px;
+        line-height: 1.4;
+    }
+
+    .photo-frame {
+        padding: 9px 9px 48px;
+    }
+
+    .photo-frame img {
+        max-height: 52vh;
+    }
+
+    .final-message {
+        font-size: 21px;
+    }
+
+    .final-message .ending {
+        font-size: 28px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- BACKGROUND -->
+<div id="background"></div>
+
+<!-- MUSIC -->
+<audio id="music" src="song.mp3" loop></audio>
+
+<button class="music-btn" id="musicBtn" onclick="toggleMusic()">♫</button>
+
+
+<!-- =========================
+     INTRO
+========================= -->
+
+<section class="screen active" id="intro">
+
+    <div class="intro-container">
+
+        <div class="small-title">a little something</div>
+
+        <h1 class="intro-title">
+            for you, palanglang ♡
+        </h1>
+
+        <div class="intro-subtitle">
+            something made with all my love
+        </div>
+
+        <!-- 3D BOUQUET -->
+
+        <div class="bouquet">
+
+            <div class="flower flower-pink">
+                <div class="petal"></div>
+                <div class="petal"></div>
+                <div class="petal"></div>
+                <div class="petal"></div>
+                <div class="petal"></div>
+                <div class="flower-center"></div>
+                <div class="stem"></div>
+                <div class="leaf one"></div>
+                <div class="leaf two"></div>
+            </div>
+
+            <div class="flower flower-white">
+                <div class="petal"></div>
+                <div class="petal"></div>
+                <div class="petal"></div>
+                <div class="petal"></div>
+                <div class="petal"></div>
+                <div class="flower-center"></div>
+                <div class="stem"></div>
+                <div class="leaf one"></div>
+                <div class="leaf two"></div>
+            </div>
+
+            <div class="flower flower-peach">
+                <div class="petal"></div>
+                <div class="petal"></div>
+                <div class="petal"></div>
+                <div class="petal"></div>
+                <div class="petal"></div>
+                <div class="flower-center"></div>
+                <div class="stem"></div>
+                <div class="leaf one"></div>
+                <div class="leaf two"></div>
+            </div>
+
+            <div class="flower flower-lavender">
+                <div class="petal"></div>
+                <div class="petal"></div>
+                <div class="petal"></div>
+                <div class="petal"></div>
+                <div class="petal"></div>
+                <div class="flower-center"></div>
+                <div class="stem"></div>
+                <div class="leaf one"></div>
+                <div class="leaf two"></div>
+            </div>
+
+            <div class="flower flower-rose">
+                <div class="petal"></div>
+                <div class="petal"></div>
+                <div class="petal"></div>
+                <div class="petal"></div>
+                <div class="petal"></div>
+                <div class="flower-center"></div>
+                <div class="stem"></div>
+                <div class="leaf one"></div>
+                <div class="leaf two"></div>
+            </div>
+
+            <div class="wrapper">
+                <div class="wrapper-ribbon"></div>
+                <div class="wrapper-bow"></div>
+            </div>
+
+        </div>
+
+
+        <!-- ENVELOPE -->
+
+        <div class="envelope-area">
+
+            <div class="envelope" id="envelope" onclick="openLetter()">
+
+                <div class="envelope-back"></div>
+
+                <div class="letter">
+                    <div class="letter-text">
+                        for you,<br>
+                        my palanglang ♡
+                    </div>
+                </div>
+
+                <div class="envelope-flap"></div>
+
+                <div class="envelope-front"></div>
+
+            </div>
+
+            <div class="click-text" id="clickText">
+                click the letter ♡
+            </div>
+
+        </div>
+
+
+        <div class="bloom-message" id="bloomMessage">
+            <h2>this is for you.</h2>
+            <p>because you deserve something beautiful. ♡</p>
+
+            <button class="next-btn" onclick="goTo(1)">
+                continue ♡
+            </button>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     PERSONALIZED IMAGE
+========================= -->
+
+<section class="screen" id="page1">
+
+    <div class="content-box">
+
+        <div class="page-label">
+            a little something from me
+        </div>
+
+        <h2 class="page-title">
+            for us ♡
+        </h2>
+
+        <img
+            src="personalized.jpg"
+            class="personalized-image"
+            alt="our personalized image"
+        >
+
+        <div class="personalized-caption">
+            nine months of us. ♡
+        </div>
+
+        <button class="next-btn" onclick="goTo(2)">
+            our memories →
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     PHOTO 01
+========================= -->
+
+<section class="screen" id="page2">
+
+    <div class="photo-page">
+
+        <div class="photo-number">01 / 09</div>
+
+        <div class="photo-frame">
+            <img src="01.jpg" alt="our first photo together">
+        </div>
+
+        <div class="message">
+first photo together, first date din. strangers pa tayo dito, still getting to know the basics, yet u still found a way to hold my hand. i liked it tho. and my first thought during our first date is how much of a cutie u are.
+        </div>
+
+        <button class="next-btn" onclick="goTo(3)">
+            next memory ♡
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     PHOTO 02
+========================= -->
+
+<section class="screen" id="page3">
+
+    <div class="photo-page">
+
+        <div class="photo-number">02 / 09</div>
+
+        <div class="photo-frame">
+            <img src="02.jpg" alt="our second photo">
+        </div>
+
+        <div class="message">
+second photo, second date. i found myself smelling your shoulders maya't maya na dito. first time din pinakilala kita kay mama. ang cute cute mo dito, ang pogi pogi pa, mahal na kita agad dito pero natatakot parin ako ng konti.
+        </div>
+
+        <button class="next-btn" onclick="goTo(4)">
+            next memory ♡
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     PHOTO 03
+========================= -->
+
+<section class="screen" id="page4">
+
+    <div class="photo-page">
+
+        <div class="photo-number">03 / 09</div>
+
+        <div class="photo-frame">
+            <img src="03.jpg" alt="our third photo">
+        </div>
+
+        <div class="message">
+third photo, naka ilang dates na tayo before this picture. u always loved making sundo of me and watch how 3pp workers gag when they see u hahaha. this was the first time u brought me to ur house. i was so scared pero wala pa pala sina tita at tito kaya okay lang. first bembang din WHAHAHHAHAHAHH.
+        </div>
+
+        <button class="next-btn" onclick="goTo(5)">
+            next memory ♡
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     PHOTO 04
+========================= -->
+
+<section class="screen" id="page5">
+
+    <div class="photo-page">
+
+        <div class="photo-number">04 / 09</div>
+
+        <div class="photo-frame">
+            <img src="04.jpg" alt="our first christmas">
+        </div>
+
+        <div class="message">
+fourth photo, our first christmas together. after this sinagot na kita kahit di ka naman nag tanong hahahhaha sorry na dali kapa palanglang hahahha. masayang- masaya ako ng time na to. kahit di tayo nakasama sa ilocos trip ng family mo, masaya parin tayo kase magkasama tayo.
+        </div>
+
+        <button class="next-btn" onclick="goTo(6)">
+            next memory ♡
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     PHOTO 05
+========================= -->
+
+<section class="screen" id="page6">
+
+    <div class="photo-page">
+
+        <div class="photo-number">05 / 09</div>
+
+        <div class="photo-frame">
+            <img src="05.jpg" alt="our basketball date">
+        </div>
+
+        <div class="message">
+fifth photo, our first "manood ng basketball in person". first time ko din ma experience to and ang best part is ikaw ang kasama ko.
+        </div>
+
+        <button class="next-btn" onclick="goTo(7)">
+            next memory ♡
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     PHOTO 06
+========================= -->
+
+<section class="screen" id="page7">
+
+    <div class="photo-page">
+
+        <div class="photo-number">06 / 09</div>
+
+        <div class="photo-frame">
+            <img src="06.jpg" alt="one of our favorite photos">
+        </div>
+
+        <div class="message">
+sixth photo, one of my favorites. after to kunin nag-away pa tayo, eh kase wala tayo maayos picture together. gusto ko palagi may pic tayo bebe -_-. during this night after away, narealize ko na kahit minsan sobrang maldita ako sayo at sobra akong tinotoyo, pinipilit mo parin akong intindihin. salamat baby kase kahit ako minsan di maintindihan sarili ko and it takes a man who genuinely loves to understand somebody like me.
+        </div>
+
+        <button class="next-btn" onclick="goTo(8)">
+            next memory ♡
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     PHOTO 07
+========================= -->
+
+<section class="screen" id="page8">
+
+    <div class="photo-page">
+
+        <div class="photo-number">07 / 09</div>
+
+        <div class="photo-frame">
+            <img src="07.jpg" alt="our national museum trip">
+        </div>
+
+        <div class="message">
+seventh photo, i loveee. first punta natin together sa national museum, pagod pero worth it. first time ko din makasakay ng train hahahhahh shet thank u baby so much. like ng sinabi mo nung dati, "i can be ur tourguide", and yes u brought me to the places i have never been.
+        </div>
+
+        <button class="next-btn" onclick="goTo(9)">
+            next memory ♡
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     PHOTO 08
+========================= -->
+
+<section class="screen" id="page9">
+
+    <div class="photo-page">
+
+        <div class="photo-number">08 / 09</div>
+
+        <div class="photo-frame">
+            <img src="08.jpg" alt="our first hiking experience">
+        </div>
+
+        <div class="message">
+eigth photo, first hiking experience together. kapoyyyyyy so much pero enjoy din hahahha. i can't wait to climb bigger and taller mountains with u my palanglang. wala akong gustong ibang kasama kundi ikaw lang.
+        </div>
+
+        <button class="next-btn" onclick="goTo(10)">
+            next memory ♡
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     PHOTO 09
+========================= -->
+
+<section class="screen" id="page10">
+
+    <div class="photo-page">
+
+        <div class="photo-number">09 / 09</div>
+
+        <div class="photo-frame">
+            <img src="09.jpg" alt="our promise rings">
+        </div>
+
+        <div class="message">
+finally, ninth photo, pinakarecent and pinakafave ko. thanks for buying us promise rings. thank u for the flower, and thank u for making me feel so loved.
+        </div>
+
+        <button class="next-btn" onclick="goTo(11)">
+            one last thing ♡
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     FINAL
+========================= -->
+
+<section class="screen" id="page11">
+
+    <div class="final-container">
+
+        <div class="final-bouquet">
+            💐
+        </div>
+
+        <div class="page-label">
+            within those nine months
+        </div>
+
+        <div class="final-message">
+within those nine months, ikaw lang palanglang.
+ikaw lang sa umaga, sa tanghali, at sa gabi.
+ikaw lang ang palaging pinipili ko, tayo.
+mahal kita, at patuloy na mamahalin pa.
+pinagdarasal ko sa Panginoon na He will bless what's ours.
+i really believe in our relationship, in us.
+
+<span class="ending">mahala kita, palagi! ♡</span>
+        </div>
+
+    </div>
+
+</section>
+
+
+<script>
+
+/* =========================
+   PAGE SYSTEM
+========================= */
+
+const pages = document.querySelectorAll(".screen");
+
+function goTo(number) {
+
+    pages.forEach(page => {
+        page.classList.remove("active");
+    });
+
+    const target = document.getElementById(
+        number === 0 ? "intro" : "page" + number
+    );
+
+    if (target) {
+        target.classList.add("active");
+        target.scrollTop = 0;
+    }
+
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+
+    createPetals(12);
+}
+
+
+/* =========================
+   LETTER OPENING
+========================= */
+
+let opened = false;
+
+function openLetter() {
+
+    if (opened) return;
+
+    opened = true;
+
+    const envelope = document.getElementById("envelope");
+    const clickText = document.getElementById("clickText");
+    const bloomMessage = document.getElementById("bloomMessage");
+
+    envelope.classList.add("open");
+
+    clickText.style.opacity = "0";
+
+    startMusic();
+
+    setTimeout(() => {
+        bloomMessage.classList.add("show");
+        createPetals(30);
+    }, 900);
+
+}
+
+
+/* =========================
+   MUSIC
+========================= */
+
+const music = document.getElementById("music");
+const musicBtn = document.getElementById("musicBtn");
+
+let musicPlaying = false;
+
+function startMusic() {
+
+    music.volume = 0.55;
+
+    music.play()
+        .then(() => {
+            musicPlaying = true;
+            musicBtn.textContent = "♫";
+        })
+        .catch(() => {
+            musicPlaying = false;
+        });
+}
+
+function toggleMusic() {
+
+    if (musicPlaying) {
+
+        music.pause();
+        musicPlaying = false;
+        musicBtn.textContent = "🔇";
+
+    } else {
+
+        music.play()
+            .then(() => {
+                musicPlaying = true;
+                musicBtn.textContent = "♫";
+            })
+            .catch(() => {});
+
+    }
+}
+
+
+/* =========================
+   FLOATING BACKGROUND HEARTS
+========================= */
+
+const background = document.getElementById("background");
+
+function createBackgroundHearts() {
+
+    for (let i = 0; i < 18; i++) {
+
+        const heart = document.createElement("div");
+
+        heart.className = "bg-heart";
+
+        heart.innerHTML =
+            Math.random() > .5 ? "♡" : "✿";
+
+        heart.style.left =
+            Math.random() * 100 + "%";
+
+        heart.style.fontSize =
+            (12 + Math.random() * 18) + "px";
+
+        heart.style.animationDuration =
+            (10 + Math.random() * 14) + "s";
+
+        heart.style.animationDelay =
+            (-Math.random() * 15) + "s";
+
+        background.appendChild(heart);
+    }
+}
+
+createBackgroundHearts();
+
+
+/* =========================
+   FALLING PETALS
+========================= */
+
+function createPetals(amount = 10) {
+
+    const symbols = ["♡", "✿", "❀", "♥"];
+
+    for (let i = 0; i < amount; i++) {
+
+        const petal = document.createElement("div");
+
+        petal.className = "petal-fall";
+
+        petal.textContent =
+            symbols[Math.floor(Math.random() * symbols.length)];
+
+        petal.style.left =
+            Math.random() * 100 + "vw";
+
+        petal.style.fontSize =
+            (12 + Math.random() * 15) + "px";
+
+        petal.style.opacity =
+            .4 + Math.random() * .5;
+
+        petal.style.animationDuration =
+            (4 + Math.random() * 5) + "s";
+
+        petal.style.animationDelay =
+            Math.random() * 1.5 + "s";
+
+        document.body.appendChild(petal);
+
+        setTimeout(() => {
+            petal.remove();
+        }, 9000);
+    }
+}
+
+
+/* =========================
+   KEYBOARD NAVIGATION
+========================= */
+
+document.addEventListener("keydown", function(e) {
+
+    if (e.key === "ArrowRight") {
+
+        const current =
+            [...pages].findIndex(
+                page => page.classList.contains("active")
+            );
+
+        if (current < pages.length - 1) {
+            goTo(current + 1);
+        }
+
+    }
+
+    if (e.key === "ArrowLeft") {
+
+        const current =
+            [...pages].findIndex(
+                page => page.classList.contains("active")
+            );
+
+        if (current > 0) {
+
+            if (current === 1) {
+                goTo(0);
+            } else {
+                goTo(current - 1);
+            }
+
+        }
+
+    }
+
+});
+
+
+/* =========================
+   TOUCH SWIPE
+========================= */
+
+let touchStartX = 0;
+
+document.addEventListener("touchstart", function(e) {
+    touchStartX = e.changedTouches[0].screenX;
+});
+
+document.addEventListener("touchend", function(e) {
+
+    const touchEndX = e.changedTouches[0].screenX;
+
+    const difference =
+        touchStartX - touchEndX;
+
+    const current =
+        [...pages].findIndex(
+            page => page.classList.contains("active")
+        );
+
+    if (Math.abs(difference) > 70) {
+
+        if (difference > 0 && current < pages.length - 1) {
+            goTo(current + 1);
+        }
+
+        if (difference < 0 && current > 0) {
+            goTo(current - 1);
+        }
+
+    }
+
+});
+
+</script>
+
+</body>
+</html>
